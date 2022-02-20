@@ -1,0 +1,11 @@
+name: Hello, world!
+on: push
+
+jobs:
+  test_github_oidc:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - run: |
+          curl --silent -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}"
